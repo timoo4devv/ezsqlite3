@@ -1,6 +1,9 @@
-__author__ = "Timo Schneider"
+# Copyright 2024 Timo
+# Licensed under the MIT license
 
-from sqlite3 import (
+"""asyncio bridge to the standard sqlite3 module"""
+
+from sqlite3 import (  # pylint: disable=redefined-builtin
     DatabaseError,
     Error,
     IntegrityError,
@@ -16,6 +19,7 @@ from sqlite3 import (
     Warning,
 )
 
+__author__ = "Timo"
 from .__version__ import __version__
 from .core import connect, Connection, Cursor
 
