@@ -54,4 +54,4 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 html_theme = "furo"
 
-html_title = f"<h3 align='center'>{release}</h3>"
+html_title = f"ezsqlite3 v{__version__} documentation"
