@@ -2,4 +2,4 @@ Contributing
 ============
 
 .. mdinclude:: ../CONTRIBUTING.md
-    ::start-line: 2
+    :start-line: 2

@@ -15,7 +15,7 @@ Connection
 Cursors
 -------
 
-.. autoclass:: aiosqlite.cursor.Cursor
+.. autoclass:: ezsqlite3.cursor.Cursor
     :special-members: __aiter__, __anext__, __aenter__, __aexit__
 
 Errors
