@@ -1,57 +1,85 @@
 # Configuration file for the Sphinx documentation builder.
-
-# For the full list of built-in configuration values, see the documentation:
+#
+# This file only contains a selection of the most common options. For a full
+# list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-# Project information
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+# -- Path setup --------------------------------------------------------------
 
-import os
-import sys
-from datetime import date
+# If extensions (or modules to document with autodoc) are in another directory,
+# add these directories to sys.path here. If the directory is relative to the
+# documentation root, use os.path.abspath to make it absolute, like shown here.
+#
+# import os
+# import sys
+# sys.path.insert(0, os.path.abspath('.'))
 
-sys.path.insert(0, os.path.abspath("../"))
 
-from ezsqlite3 import __version__
+# -- Project information -----------------------------------------------------
+
+import datetime
 
 project = "ezsqlite3"
-copyright = f"{date.today().year}, Timo"
-author = "Timo"
-release = __version__
-
-version = __version__
+copyright = f"{datetime.date.today().year}, Timo Schneider"
+author = "Timo Schneider"
 
 
-# General configuration
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
+# -- General configuration ---------------------------------------------------
 
+# Add any Sphinx extension module names here, as strings. They can be
+# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
+# ones.
 extensions = [
     "sphinx.ext.autodoc",
-    "sphinx.ext.todo",
-    "sphinx.ext.viewcode",
-    "sphinx.ext.napoleon",
-    "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
-    "sphinx_autodoc_typehints",
-    "sphinx_copybutton",
+    "sphinx_mdinclude",
 ]
 
-simplify_optional_unions = True
+# Add any paths that contain templates here, relative to this directory.
+templates_path = ["_templates"]
 
-autodoc_member_order = "bysource"
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+# This pattern also affects html_static_path and html_extra_path.
+exclude_patterns = []
 
-intersphinx_mapping = {
-    "python": ("https://docs.python.org/3", None)
+autodoc_default_options = {
+    "show-inheritance": True,
+    "members": True,
+    "undoc-members": True,
+}
+autodoc_member_order = "groupwise"
+autodoc_typehints = "description"
+
+highlight_language = "text"
+intersphinx_mapping = {"python": ("https://docs.python.org/3", None)}
+master_doc = "index"
+
+# -- Options for HTML output -------------------------------------------------
+
+# The theme to use for HTML and HTML Help pages.  See the documentation for
+# a list of builtin themes.
+#
+html_theme = "alabaster"
+html_theme_options = {
+    "description": "Sqlite for Python AsyncIO",
+    "fixed_sidebar": True,
+    "badge_branch": "master",
+    "github_button": False,
+    "github_user": "timoo4devv",
+    "github_repo": "ezsqlite3",
+    "show_powered_by": False,
+    "sidebar_collapse": False,
+    "extra_nav_links": {
+        "Report Issues": "https://github.com/timoo4devv/ezsqlite3/issues",
+    },
 }
 
-templates_path = ["_templates"]
-exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
-
-
-# Options for HTML output and furo customisation
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
-# https://pradyunsg.me/furo/customisation/
-
-html_theme = "furo"
-
-html_title = f"ezsqlite3 v{__version__} documentation"
+html_sidebars = {
+    "**": [
+        "about.html",
+        "navigation.html",
+        "relations.html",
+        "searchbox.html",
+    ],
+}
